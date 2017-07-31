@@ -177,10 +177,10 @@ defaults write com.apple.safari AutoFillFromAddressBook -bool false && defaults 
 defaults write com.apple.safari WarnAboutFraudulentWebsites -bool true
 
 ## Bloquer les fenêtres surgissantes
-defaults write com.apple.safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+defaults write com.apple.safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false && defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
 
 ## Ne pas autoriser les modules
-defaults write com.apple.safari WebKitPluginsEnabled -bool false
+defaults write com.apple.safari WebKitPluginsEnabled -bool false && defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
 
 ## Cookies et données de sites web : n'autoriser que pour ce site web
 defaults write com.apple.safari BlockStoragePolicy -int 3 && defaults write com.apple.safari WebKitStorageBlockingPolicy -int 1 && defaults write com.apple.Safari com.apple.safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
