@@ -182,6 +182,12 @@ defaults write com.apple.safari WebKitJavaScriptCanOpenWindowsAutomatically -boo
 ## Ne pas autoriser les modules
 defaults write com.apple.safari WebKitPluginsEnabled -bool false
 
+## Cookies et données de sites web : n'autoriser que pour ce site web
+defaults write com.apple.safari BlockStoragePolicy -int 3 && defaults write com.apple.safari WebKitStorageBlockingPolicy -int 1 && defaults write com.apple.Safari com.apple.safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
+
+## Utilisation du service de géolocalisation par le site web : refuser sans confirmation
+defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
+
 ## Demander aux sites web de ne pas me suivre
 defaults write com.apple.safari SendDoNotTrackHTTPHeader -int 1
 
