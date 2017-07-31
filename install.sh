@@ -32,11 +32,11 @@ nvram SystemAudioVolume="%00"
 defaults write com.apple.PowerChime ChimeOnAllHardware -bool true && open /System/Library/CoreServices/PowerChime.app
 
 ## Paramétrer le nom de la machine
-read -p "Quel est le nom de cette machine ?" -i "Pippin" COMPUTERNAME
-scutil --set ComputerName $COMPUTERNAME
-scutil --set HostName $COMPUTERNAME
-scutil --set LocalHostName $COMPUTERNAME
-echo "Cette machine est baptisée $COMPUTERNAME."
+read -p "Quel est le nom de cette machine ?" COMPUTERNAME
+scutil --set ComputerName ${COMPUTERNAME:-Pippin}
+scutil --set HostName ${COMPUTERNAME:-Pippin}
+scutil --set LocalHostName ${COMPUTERNAME:-Pippin}
+echo "Cette machine s’appellera ${COMPUTERNAME:-Pippin}."
 
 ##############
 ## Sécurité ##
