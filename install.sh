@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 
 ##########################################################################################
 ##########################################################################################
@@ -12,6 +12,8 @@
 ## http://www.cecill.info/licences/Licence_CeCILL_V2.1-fr.txt							##
 ##########################################################################################
 ##########################################################################################
+
+echo "La configuration de cette machine va commencer."
 
 ##################################
 ## Ouverture d’une session sudo ##
@@ -30,9 +32,11 @@ nvram SystemAudioVolume="%00"
 defaults write com.apple.PowerChime ChimeOnAllHardware -bool true && open /System/Library/CoreServices/PowerChime.app
 
 ## Paramétrer le nom de la machine
-scutil --set ComputerName nomdelamachine
-scutil --set HostName nomdelamachine
-scutil --set LocalHostName nomdelamachine
+read -p "Quel est le nom de cette machine ?" -i "Pippin" COMPUTERNAME
+scutil --set ComputerName $COMPUTERNAME
+scutil --set HostName $COMPUTERNAME
+scutil --set LocalHostName $COMPUTERNAME
+echo "Cette machine est baptisée $COMPUTERNAME."
 
 ##############
 ## Sécurité ##
@@ -210,6 +214,8 @@ defaults write com.apple.safari ShowOverlayStatusBar -int 1
 ## Homebrew ##
 ##############
 
+echo "La configuration de cette machine est terminée. L’installation des applications et des utilitaires va commencer."
+
 ## Installer Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -224,3 +230,5 @@ brew install ffmpeg handbrake multimarkdown pandoc
 
 ## Lancement des applications pour se connecter aux services et entrer les licences
 open -a 1Password \6 && open -a BBEdit && open -a Crashplan && open -a Dropbox && open -a Things && open -a Tower
+
+echo "L’installation des applications et des utilitaires est terminée. Au travail !"
