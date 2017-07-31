@@ -162,25 +162,25 @@ defaults write NSGlobalDomain AppleHighlightColor "0.968627 0.831373 1.000000"
 ############
 
 ## Au démarrage, Safari ouvre : toutes les fenêtres de la dernier session
-defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
+defaults write com.apple.safari AlwaysRestoreSessionAtLaunch -bool true
 
 ## Page d’accueil : vide
-defaults write com.apple.Safari HomePage ""
+defaults write com.apple.safari HomePage ""
 
 ## Ne pas ouvrir automatiquement les fichiers dits « fiables »
-defaults write com.apple.Safari AutoOpenSafeDownloads -boolean NO
+defaults write com.apple.safari AutoOpenSafeDownloads -boolean NO
 
 ## Ne pas remplir automatiquement les formulaires web
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false && defaults write com.apple.Safari AutoFillPasswords -bool false && defaults write com.apple.Safari AutoFillCreditCardData -bool false && defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+defaults write com.apple.safari AutoFillFromAddressBook -bool false && defaults write com.apple.safari AutoFillPasswords -bool false && defaults write com.apple.safari AutoFillCreditCardData -bool false && defaults write com.apple.safari AutoFillMiscellaneousForms -bool false
 
 ## Avertir lors de l’accès à un site web frauduleux
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+defaults write com.apple.safari WarnAboutFraudulentWebsites -bool true
 
 ## Bloquer les fenêtres surgissantes
-defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+defaults write com.apple.safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
 
 ## Ne pas autoriser les modules
-defaults write com.apple.Safari WebKitPluginsEnabled -bool false && defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
+defaults write com.apple.safari WebKitPluginsEnabled -bool false
 
 ## Demander aux sites web de ne pas me suivre
 defaults write com.apple.safari SendDoNotTrackHTTPHeader -int 1
@@ -188,8 +188,11 @@ defaults write com.apple.safari SendDoNotTrackHTTPHeader -int 1
 ## Afficher l’adresse complète du site web
 defaults write com.apple.safari ShowFullURLInSmartSearchField -int 1
 
-# La touche Tab permet de mettre en surbrillance les objets des pages web
-defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true && defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+## La touche Tab permet de mettre en surbrillance les objets des pages web
+defaults write com.apple.safari WebKitTabToLinksPreferenceKey -bool true
+
+## Ne jamais utiliser de tailles de caractères inférieures à 10
+defaults write com.apple.safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2MinimumFontSize -int 10
 
 ## Afficher le menu Développement dans la barre des menus
 defaults write com.apple.safari IncludeDevelopMenu -int 1
