@@ -51,11 +51,34 @@ defaults write com.apple.screensaver askForPassword -int 1 && defaults write com
 ## Désactiver la connexion aux portails captifs
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
+#############
+## Clavier ##
+#############
+
+## Activer l’accès au clavier complet
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+## Désactiver la correction automatique et les autres assistances
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false && defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false && defaults write -g ApplePressAndHoldEnabled -bool false
+
+############
+## Souris ##
+############
+
+## Sens du défilement : (vraiment) naturel
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+## Toucher pour cliquer
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+## Configurer la meilleure couleur de contraste
+defaults write NSGlobalDomain AppleHighlightColor "0.968627 0.831373 1.000000"
+
 ##########
 ## Dock ##
 ##########
 
-## Vider le Dock (il sera rempli au fur et à mesure des usages, dans l’ordre alphabétique)
+## Vider le Dock
 defaults write com.apple.dock persistent-apps -array
 
 ## Placer le Dock dans la bonne position
@@ -69,6 +92,22 @@ defaults write com.apple.dock minimize-to-application -bool true
 
 ## Relancer le Dock
 killall Dock
+
+#####################
+## Mission Control ##
+#####################
+
+## Ne pas réarranger automatiquement les Spaces en fonction de votre utilisation la plus récente
+defaults write com.apple.dock mru-spaces -bool false
+
+## Grouper les fenêtres par application
+defaults write com.apple.dock expose-group-by-app -bool true
+
+## Coin actif > en bas à gauche : Mission Control
+defaults write com.apple.dock wvous-bl-corner -int 2 && defaults write com.apple.dock wvous-bl-modifier -int 0
+
+## Coin actif > en haut à droite : mettre le moniteur en veille
+defaults write com.apple.dock wvous-tr-corner -int 10 && defaults write com.apple.dock wvous-tr-modifier -int 0
 
 ############
 ## Finder ##
@@ -107,25 +146,10 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 ## Relancer le Finder
 killall Finder
 
-#####################
-## Mission Control ##
-#####################
-
-## Ne pas réarranger automatiquement les Spaces en fonction de votre utilisation la plus récente
-defaults write com.apple.dock mru-spaces -bool false
-
-## Grouper les fenêtres par application
-defaults write com.apple.dock expose-group-by-app -bool true
-
-## Coin actif > en bas à gauche : Mission Control
-defaults write com.apple.dock wvous-bl-corner -int 2 && defaults write com.apple.dock wvous-bl-modifier -int 0
-
-## Coin actif > en haut à droite : mettre le moniteur en veille
-defaults write com.apple.dock wvous-tr-corner -int 10 && defaults write com.apple.dock wvous-tr-modifier -int 0
-
 ##################
 ## Fond d’écran ##
 ##################
+
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Earth Horizon.jpg"'
 
 ######################
@@ -137,29 +161,6 @@ defaults write com.apple.screencapture location ~/Documents/Captures && killall 
 
 ## Au format JPG
 defaults write com.apple.screencapture type -string "jpg"
-
-#############
-## Clavier ##
-#############
-
-## Activer l’accès au clavier complet
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-## Désactiver la correction automatique et les autres assistances
-defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false && defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false && defaults write -g ApplePressAndHoldEnabled -bool false
-
-############
-## Souris ##
-############
-
-## Sens du défilement : (vraiment) naturel
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-## Toucher pour cliquer
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-## Configurer la meilleure couleur de contraste
-defaults write NSGlobalDomain AppleHighlightColor "0.968627 0.831373 1.000000"
 
 ############
 ## Safari ##
@@ -209,6 +210,12 @@ defaults write com.apple.safari IncludeDevelopMenu -int 1
 
 ## Présentation > Afficher la barre d’état
 defaults write com.apple.safari ShowOverlayStatusBar -int 1
+
+##############
+## Terminal ##
+##############
+
+defaults write com.apple.Terminal "Default Window Settings" -string "Homebrew" && defaults write com.apple.Terminal "Startup Window Settings" -string "Homebrew"
 
 ##############
 ## Homebrew ##
