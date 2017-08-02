@@ -230,7 +230,7 @@ brew tap caskroom/cask
 brew cask install 1password alfred bbedit coconutbattery crashplan dropbox endurance firefox libreoffice imageoptim sketch tower
 
 ## Installer utilitaires
-brew install ffmpeg handbrake multimarkdown pandoc
+brew install displaycal ffmpeg handbrake multimarkdown pandoc
 
 ## Vider le Dock
 defaults write com.apple.dock persistent-apps -array
