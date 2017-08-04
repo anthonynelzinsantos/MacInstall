@@ -227,12 +227,11 @@ echo "La configuration de cette machine est terminée. L’installation des appl
 brew tap caskroom/cask
 
 ## Installer applications avec Cask
-brew cask install 1password alfred bbedit coconutbattery crashplan dropbox endurance firefox libreoffice imageoptim sketch tower
+brew cask install 1password alfred bbedit coconutbattery crashplan displaycal dropbox endurance firefox imageoptim libreoffice musicbrainz-picard sketch tower xld
 
 ## Installer utilitaires
-brew install displaycal ffmpeg handbrake multimarkdown pandoc python3
+brew install ffmpeg handbrake multimarkdown pandoc python3 youtube-dl
 pip3 install markdown pelican
-
 
 ## Vider le Dock
 defaults write com.apple.dock persistent-apps -array
