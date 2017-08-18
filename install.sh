@@ -230,7 +230,7 @@ brew tap caskroom/cask
 brew cask install 1password alfred bbedit coconutbattery crashplan displaycal dropbox endurance firefox imageoptim libreoffice musicbrainz-picard qlmarkdown sketch tower xld
 
 ## Installer utilitaires
-brew install ffmpeg handbrake multimarkdown pandoc python3 youtube-dl
+brew install ffmpeg handbrake imagemagick multimarkdown pandoc python3 youtube-dl
 pip3 install markdown pelican
 
 ## Vider le Dock
