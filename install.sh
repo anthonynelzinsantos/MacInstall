@@ -227,7 +227,7 @@ echo "La configuration de cette machine est terminée. L’installation des appl
 brew tap caskroom/cask
 
 ## Installer applications avec Cask
-brew cask install 1password alfred bbedit coconutbattery crashplan displaycal dropbox endurance firefox imageoptim itunes-producer libreoffice musicbrainz-picard qlmarkdown sketch tower xld
+brew cask install 1password alfred bbedit coconutbattery displaycal dropbox endurance firefox imageoptim itunes-producer libreoffice musicbrainz-picard qlmarkdown sketch tower xld
 
 ## Installer utilitaires
 brew install ffmpeg handbrake imagemagick multimarkdown pandoc python3 youtube-dl
@@ -254,6 +254,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 killall Dock
 
 ## Lancement des applications pour se connecter aux services et entrer les licences
-open -a 1Password \6 && open -a BBEdit && open -a Crashplan && open -a Dropbox && open -a Things && open -a Tower
+open -a 1Password \6 && open -a BBEdit && open -a Dropbox && open -a Things && open -a Tower
 
 echo "L’installation des applications et des utilitaires est terminée. Au travail !"
