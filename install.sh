@@ -227,7 +227,7 @@ echo "La configuration de cette machine est terminée. L’installation des appl
 brew tap caskroom/cask
 
 ## Installer applications avec Cask
-brew cask install 1password alfred basictex bbedit coconutbattery displaycal dropbox endurance firefox imageoptim itunes-producer libreoffice musicbrainz-picard qlmarkdown sketch tower xld
+brew cask install 1password alfred bbedit coconutbattery displaycal dropbox endurance firefox imageoptim itunes-producer libreoffice mactex musicbrainz-picard qlmarkdown sketch tower xld
 
 ## Installer utilitaires
 brew install ffmpeg handbrake imagemagick multimarkdown pandoc python3 youtube-dl
