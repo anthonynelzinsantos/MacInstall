@@ -3,7 +3,7 @@
 ##########################################################################################
 ##########################################################################################
 ## Paramétrage rapide d’un Mac															##
-## v201707311524																		##
+## v201808211100																	##
 ##########################################################################################
 ## Anthony Nelzin-Santos																##
 ## https://anthony.nelzin.fr															##
@@ -227,7 +227,7 @@ echo "La configuration de cette machine est terminée. L’installation des appl
 brew tap caskroom/cask
 
 ## Installer applications avec Cask
-brew cask install 1password alfred bbedit coconutbattery displaycal dropbox endurance firefox imageoptim itunes-producer libreoffice mactex musicbrainz-picard qlmarkdown sketch tower xld
+brew cask install 1password alfred bbedit coconutbattery displaycal dropbox firefox imageoptim itunes-producer libreoffice mactex mattermost musicbrainz-picard nvalt qlmarkdown sketch skitch tower xld
 
 ## Installer utilitaires
 brew install ffmpeg handbrake imagemagick multimarkdown pandoc python3 youtube-dl
