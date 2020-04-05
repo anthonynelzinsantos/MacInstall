@@ -2,14 +2,16 @@
 
 ##########################################################################################
 ##########################################################################################
-## Paramétrage rapide d’un Mac															                            ##
-## v202004051210																	                                      ##
 ##                                                                                      ##
-## Anthony Nelzin-Santos				                                												##
-## https://anthony.nelzin.fr													                              		##
+## Paramétrage rapide d’un Mac                                                          ##
+## v202004051221                                                                        ##
 ##                                                                                      ##
-## Licence CeCILL															                                    			##
-## http://www.cecill.info/licences/Licence_CeCILL_V2.1-fr.txt						              	##
+## Anthony Nelzin-Santos                                                                ##
+## https://anthony.nelzin.fr                                                            ##
+##                                                                                      ##
+## Licence CeCILL                                                                       ##
+## http://www.cecill.info/licences/Licence_CeCILL_V2.1-fr.txt                           ##
+##                                                                                      ##
 ##########################################################################################
 ##########################################################################################
 
@@ -155,6 +157,9 @@ defaults write com.apple.Terminal "Default Window Settings" -string "Homebrew" &
 
 echo "La configuration de cette machine est terminée. L’installation des applications et des utilitaires va commencer."
 
+## Installer outils en ligne de commande
+xcode-select --install
+
 ## Installer Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -163,6 +168,21 @@ brew tap caskroom/cask
 
 ## Installer applications avec Cask
 brew cask install 1password alfred bbedit coconutbattery displaycal dropbox firefox iina imageoptim itunes-producer kindlegen libreoffice mactex mattermost musicbrainz-picard netnewswire sketch skitch tower xld
+
+## Installer applications avec MAS
+brew install mas
+read -p "Quel est votre identifiant Apple ?" ID
+mas signin --dialog $ID
+
+mas install 1333542190 # 1 Password 7
+mas install 961632517 # Be Focused Pro
+mas install 1435957248 # Drafts
+mas install 1464122853 # NextDNS
+mas install 924891282 # Pixave
+mas install 407963104 # Pixelmator
+mas install 904280696 # Things
+mas install 1384080005 # Tweetbot
+mas install 1225570693 # Ulysses
 
 ## Installer utilitaires
 brew install ffmpeg handbrake hugo imagemagick multimarkdown pandoc python3 youtube-dl
