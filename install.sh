@@ -143,22 +143,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 ## Relancer le Finder
 killall Finder
 
-##################
-## Fond d’écran ##
-##################
-
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Earth Horizon.jpg"'
-
-######################
-## Captures d’écran ##
-######################
-
-## Enregistrer les captures dans le dossier Documents
-defaults write com.apple.screencapture location ~/Documents/Captures && killall SystemUIServer
-
-## Au format JPG
-defaults write com.apple.screencapture type -string "jpg"
-
 ##############
 ## Terminal ##
 ##############
