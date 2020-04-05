@@ -2,14 +2,14 @@
 
 ##########################################################################################
 ##########################################################################################
-## Paramétrage rapide d’un Mac															##
-## v201808211100																	##
-##########################################################################################
-## Anthony Nelzin-Santos																##
-## https://anthony.nelzin.fr															##
-##########################################################################################
-## Licence CeCILL																		##
-## http://www.cecill.info/licences/Licence_CeCILL_V2.1-fr.txt							##
+## Paramétrage rapide d’un Mac															                            ##
+## v202004051210																	                                      ##
+##                                                                                      ##
+## Anthony Nelzin-Santos				                                												##
+## https://anthony.nelzin.fr													                              		##
+##                                                                                      ##
+## Licence CeCILL															                                    			##
+## http://www.cecill.info/licences/Licence_CeCILL_V2.1-fr.txt						              	##
 ##########################################################################################
 ##########################################################################################
 
@@ -158,55 +158,6 @@ defaults write com.apple.screencapture location ~/Documents/Captures && killall 
 
 ## Au format JPG
 defaults write com.apple.screencapture type -string "jpg"
-
-############
-## Safari ##
-############
-
-## Au démarrage, Safari ouvre : toutes les fenêtres de la dernier session
-defaults write com.apple.safari AlwaysRestoreSessionAtLaunch -bool true
-
-## Page d’accueil : vide
-defaults write com.apple.safari HomePage ""
-
-## Ne pas ouvrir automatiquement les fichiers dits « fiables »
-defaults write com.apple.safari AutoOpenSafeDownloads -boolean NO
-
-## Ne pas remplir automatiquement les formulaires web
-defaults write com.apple.safari AutoFillFromAddressBook -bool false && defaults write com.apple.safari AutoFillPasswords -bool false && defaults write com.apple.safari AutoFillCreditCardData -bool false && defaults write com.apple.safari AutoFillMiscellaneousForms -bool false
-
-## Avertir lors de l’accès à un site web frauduleux
-defaults write com.apple.safari WarnAboutFraudulentWebsites -bool true
-
-## Bloquer les fenêtres surgissantes
-defaults write com.apple.safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false && defaults write com.apple.safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-
-## Ne pas autoriser les modules
-defaults write com.apple.safari WebKitPluginsEnabled -bool false && defaults write com.apple.safari com.apple.safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
-
-## Cookies et données de sites web : n'autoriser que pour ce site web
-defaults write com.apple.safari BlockStoragePolicy -int 3 && defaults write com.apple.safari WebKitStorageBlockingPolicy -int 1 && defaults write com.apple.Safari com.apple.safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
-
-## Utilisation du service de géolocalisation par le site web : refuser sans confirmation
-defaults write com.apple.safari SafariGeolocationPermissionPolicy -int 0
-
-## Demander aux sites web de ne pas me suivre
-defaults write com.apple.safari SendDoNotTrackHTTPHeader -int 1
-
-## Afficher l’adresse complète du site web
-defaults write com.apple.safari ShowFullURLInSmartSearchField -int 1
-
-## La touche Tab permet de mettre en surbrillance les objets des pages web
-defaults write com.apple.safari WebKitTabToLinksPreferenceKey -bool true
-
-## Ne jamais utiliser de tailles de caractères inférieures à 10
-defaults write com.apple.safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2MinimumFontSize -int 10
-
-## Afficher le menu Développement dans la barre des menus
-defaults write com.apple.safari IncludeDevelopMenu -int 1
-
-## Présentation > Afficher la barre d’état
-defaults write com.apple.safari ShowOverlayStatusBar -int 1
 
 ##############
 ## Terminal ##
