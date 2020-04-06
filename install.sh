@@ -174,7 +174,6 @@ brew install mas
 read -p "Quel est votre identifiant Apple ?" ID
 mas signin --dialog $ID
 
-mas install 1333542190 # 1 Password 7
 mas install 961632517 # Be Focused Pro
 mas install 1435957248 # Drafts
 mas install 1464122853 # NextDNS
