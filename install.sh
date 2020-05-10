@@ -224,6 +224,7 @@ read -p "Quel est votre identifiant Apple ?" ID
 mas signin --dialog $ID
 
 mas install 961632517 # Be Focused Pro
+mas install 1121192229 # Better
 mas install 1435957248 # Drafts
 mas install 1464122853 # NextDNS
 mas install 924891282 # Pixave
