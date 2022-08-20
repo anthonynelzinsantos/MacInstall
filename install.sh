@@ -3,8 +3,8 @@
 ##########################################################################################
 ##########################################################################################
 ##                                                                                      ##
-## Paramétrage rapide d’un Mac                                                          ##
-## v202004051221                                                                        ##
+## Script d'installation de mes machines                                                ##
+## v20220820                                                                            ##
 ##                                                                                      ##
 ## Anthony Nelzin-Santos                                                                ##
 ## https://anthony.nelzin.fr                                                            ##
@@ -53,35 +53,16 @@ defaults write com.apple.screensaver askForPassword -int 1 && defaults write com
 ## Désactiver la connexion aux portails captifs
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
-#############
-## Clavier ##
-#############
-
-## Activer l’accès au clavier complet
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-## Désactiver la correction automatique et les autres assistances
-defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false && defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false && defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false && defaults write -g ApplePressAndHoldEnabled -bool false
-
 ############
 ## Souris ##
 ############
 
-## Sens du défilement : (vraiment) naturel
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
 ## Toucher pour cliquer
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-## Configurer la meilleure couleur de contraste
-defaults write NSGlobalDomain AppleHighlightColor "0.968627 0.831373 1.000000"
 
 ##########
 ## Dock ##
 ##########
-
-## Placer le Dock dans la bonne position
-defaults write com.apple.dock orientation -string "left"
 
 ## Masquer/afficher le Dock automatiquement
 defaults write com.apple.dock autohide -boolean yes
@@ -209,52 +190,65 @@ echo "La configuration de cette machine est terminée. L’installation des appl
 ## Installer outils en ligne de commande
 xcode-select --install
 
-## Installer Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+## Installer Rosetta
+softwareupdate --install-rosetta
 
-## Installer Cask
-brew tap caskroom/cask
+## Installer Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/anthonynelzin/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ## Installer applications avec Cask
-brew cask install 1password alfred bbedit coconutbattery displaycal dropbox firefox iina imageoptim itunes-producer kindlegen libreoffice mactex mattermost musicbrainz-picard netnewswire sketch skitch tower xld
+brew cask install 1password appcleaner audacity bbedit firefox forecast kdrive pocket-casts tower
 
 ## Installer applications avec MAS
 brew install mas
 read -p "Quel est votre identifiant Apple ?" ID
 mas signin --dialog $ID
 
-mas install 961632517 # Be Focused Pro
-mas install 1121192229 # Better
-mas install 1435957248 # Drafts
-mas install 1464122853 # NextDNS
-mas install 924891282 # Pixave
-mas install 407963104 # Pixelmator
+mas install 1569813296 # 1P for Safari
+mas install 1091189122 # Bear
+mas install 1423210932 # Flow
+mas install 1479461686 # Foodnoms
+mas install 775737590 # iA Writer
+mas install 409183694 # Keynote
+# mas install 634148309 # Logic Pro
+mas install 409203825 # Numbers
+mas install 409201541 # Pages
+mas install 1529448980 # Reeder
 mas install 904280696 # Things
-mas install 1384080005 # Tweetbot
-mas install 1225570693 # Ulysses
+
+## Ne reste plus que le connecteur Antidote (soupir)
+open "https://antidote.app"
 
 ## Installer utilitaires
-brew install ffmpeg handbrake hugo imagemagick multimarkdown pandoc python3 youtube-dl
-pip3 install bs4 lxml markdown numpy pillow sklearn
+brew install ffmpeg hugo imagemagick multimarkdown pandoc python3 wget youtube-dl
+pip3 install biplist pillow sklearn
 
 ## Vider le Dock
 defaults write com.apple.dock persistent-apps -array
 
 ## Ajouter apps au Dock
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Antidote\ 10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/1Password.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/BBEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Drafts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Music.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/NetNewsWire.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Bear.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iA\ Writer.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Messages.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Pocket\ Casts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Reeder.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Things.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Tower.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Ulysses.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 ## Relancer le Dock
 killall Dock
 
 ## Lancement des applications pour se connecter aux services et entrer les licences
-open -a 1Password \7 && open -a BBEdit && open -a Dropbox && open -a Things && open -a Tower
+open -a 1Password
+open -a BBEdit
+open -a kDrive
+open -a Pocket\ Casts
+open -a Reeder
+open -a Things
 
 echo "L’installation des applications et des utilitaires est terminée. Au travail !"
