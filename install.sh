@@ -37,9 +37,6 @@ echo "This computer will now be called ${COMPUTERNAME:-Pippin}."
 ## Ask for password immediately after screensaver
 defaults write com.apple.screensaver askForPassword -int 1 && defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-## Disable captive control access
-defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
-
 ##############################
 ## Dock and Mission Control ##
 ##############################
@@ -86,31 +83,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ## Relaunch Finder
 killall Finder
-
-############
-## Safari ##
-############
-
-## Always restore session at launch
-defaults write com.apple.safari AlwaysRestoreSessionAtLaunch -bool true
-
-## No homepage
-defaults write com.apple.safari HomePage ""
-
-## Don't open "safe" downloads
-defaults write com.apple.safari AutoOpenSafeDownloads -boolean NO
-
-## Show full URL in search field
-defaults write com.apple.safari ShowFullURLInSmartSearchField -int 1
-
-## Allow page navigation with the Tab key
-defaults write com.apple.safari WebKitTabToLinksPreferenceKey -bool true
-
-## Add the develop menu
-defaults write com.apple.safari IncludeDevelopMenu -int 1
-
-## Show overlay status bar
-defaults write com.apple.safari ShowOverlayStatusBar -int 1
 
 ##############
 ## Terminal ##
