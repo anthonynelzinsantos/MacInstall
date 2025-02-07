@@ -127,7 +127,7 @@ mas install 409203825 # Numbers
 mas install 409201541 # Pages
 mas install 1444636541 # Photomator
 mas install 6475002485 # Reeder
-mas insatll 1606145041 # Sleeve
+mas install 1606145041 # Sleeve
 mas install 6471380298 # Stop the Madness Pro
 mas install 899247664 # Testflight
 mas install 1415257369 # Waterminder
