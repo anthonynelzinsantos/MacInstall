@@ -124,6 +124,7 @@ mas install 6475002485 # Reeder
 mas install 1606145041 # Sleeve
 mas install 6471380298 # Stop the Madness Pro
 mas install 899247664 # Testflight
+mas install 1225570693 # Ulysses
 mas install 1415257369 # Waterminder
 
 ## Open Antidote's website
