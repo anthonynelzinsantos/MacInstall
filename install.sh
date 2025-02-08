@@ -91,9 +91,6 @@ killall Finder
 ## Use Homebrew theme
 defaults write com.apple.Terminal "Default Window Settings" -string "Homebrew" && defaults write com.apple.Terminal "Startup Window Settings" -string "Homebrew"
 
-## Install command line tools
-xcode-select --install
-
 ## Install Rosetta
 softwareupdate --install-rosetta
 
@@ -112,9 +109,6 @@ brew cask install audacity bbedit firefox tower
 
 ## Install apps with MAS
 brew install mas
-read -p "What's your Apple ID?" ID
-mas signin --dialog $ID
-
 mas install 1365531024 # 1Blocker
 mas install 1598429775 # Antidote Connector
 mas install 1423210932 # Flow
