@@ -105,7 +105,7 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> .zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ## Install apps with Cask
-brew cask install audacity bbedit firefox tower
+brew cask install audacity bbedit ffmpeg firefox tower
 
 ## Install apps with MAS
 brew install mas
