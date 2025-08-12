@@ -17,26 +17,36 @@
 
 echo "The configuration will start…"
 
-############################
-## Opening a sudo session ##
-############################
+# Quit System Settings to prevent overwriting
+osascript -e 'tell application "System Settings" to quit'
+
+# Opening a sudo session
 echo "Opening a sudo session…"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-##############
-## Security ##
-##############
+# Setting the time
+systemsetup -setusingnetworktime on
+systemsetup -settimezone Europe/Paris
+systemsetup -setnetworktimeserver pool.ntp.org
 
-## Naming the machine
+# Setting automatic reboot in case of problems or power failures
+# Comment out when setting up servers
+# systemsetup -setrestartfreeze on
+# systemsetup -setWaitForStartupAfterPowerFailure 30
+
+# Naming the machine
 read -p "What will this computer’s name be?" COMPUTERNAME
-scutil --set ComputerName ${COMPUTERNAME:-Pippin}
-scutil --set HostName ${COMPUTERNAME:-Pippin}
-scutil --set LocalHostName ${COMPUTERNAME:-Pippin}
+systemsetup -setcomputername ${COMPUTERNAME:-Pippin}
+systemsetup -setlocalsubnetname ${COMPUTERNAME:-Pippin}
 echo "This computer will be called ${COMPUTERNAME:-Pippin}."
 
-## Ask for password immediately after screensaver
-defaults write com.apple.screensaver askForPassword -int 1 && defaults write com.apple.screensaver askForPasswordDelay -int 0
+# Setting the sleep timers (in minutes)
+systemsetup -setharddisksleep 10
+systemsetup -setdisplaysleep 10
+echo "Setting screen lock, please enter your password when prompted…"
+sysadminctl -screenLock immediate -password -
+systemsetup -setcomputersleep Never
 
 ##############################
 ## Dock and Mission Control ##
