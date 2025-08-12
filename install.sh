@@ -4,7 +4,7 @@
 ###################################
 ##                               ##
 ## MacInstall                    ##
-## v20250207                     ##
+## v20250812                     ##
 ##                               ##
 ## Anthony Nelzin-Santos         ##
 ## https://z1nz0l1n.com          ##
@@ -15,11 +15,12 @@
 ###################################
 ###################################
 
-echo "Configuration will start."
+echo "The configuration will start…"
 
 ############################
 ## Opening a sudo session ##
 ############################
+echo "Opening a sudo session…"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -28,11 +29,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ##############
 
 ## Naming the machine
-read -p "What's this computer name?" COMPUTERNAME
+read -p "What will this computer’s name be?" COMPUTERNAME
 scutil --set ComputerName ${COMPUTERNAME:-Pippin}
 scutil --set HostName ${COMPUTERNAME:-Pippin}
 scutil --set LocalHostName ${COMPUTERNAME:-Pippin}
-echo "This computer will now be called ${COMPUTERNAME:-Pippin}."
+echo "This computer will be called ${COMPUTERNAME:-Pippin}."
 
 ## Ask for password immediately after screensaver
 defaults write com.apple.screensaver askForPassword -int 1 && defaults write com.apple.screensaver askForPasswordDelay -int 0
