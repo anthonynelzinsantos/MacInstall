@@ -51,12 +51,12 @@ systemsetup -setcomputersleep Never
 # Time #
 ########
 
-# Enable network time
+# Enabling network time
 systemsetup -setusingnetworktime on
 systemsetup -settimezone Europe/Paris
 systemsetup -setnetworktimeserver pool.ntp.org
 
-# Setting up menubar clock
+# Setting up the menubar clock
 defaults write com.apple.menuextra.clock ShowDate -bool true
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
 
@@ -66,41 +66,51 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
 
 echo "Setting up Finder…"
 
-# New windows show Recents
+# Opening the Recents folder with new windows
 defaults write com.apple.finder NewWindowTarget -string "PfAF"
 
-# Default view to list
+# Setting up list view as default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Show path and status bar
+# Showing the path and status bars
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Immediatly show the toolbar icon on hover
+# Immediatly showing the toolbar icon on hover
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
-# Show all extensions
+# Showing all extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Don’t confirm extension change
+# Disable the extension change confirmation
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Don’t show Desktop
+# Disabling the Desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.finder SidebarShowingiCloudDesktop -bool false
 defaults read com.apple.WindowManager StandardHideDesktopIcons -bool true
 
-# Relaunch Finder
+# Relaunching Finder
 killall Finder
 
-##############################
-## Dock and Mission Control ##
-##############################
+########
+# Dock #
+########
 
-## Automatically hide the Dock
-defaults write com.apple.dock autohide -boolean yes
+# Pinning to the left edge of the screen
+defaults write com.apple.dock orientation -string "left"
+
+# Hiding automatically
+defaults write com.apple.dock autohide -bool true
+
+# Setting the icon size to 36 px
+defaults write com.apple.dock "tilesize" -int 36
+
+##############################
+## Mission Control ##
+##############################
 
 ## Hot corner > top right > Mission Control
 defaults write com.apple.dock wvous-tr-corner -int 2 && defaults write com.apple.dock wvous-tr-modifier -int 0
