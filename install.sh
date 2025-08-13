@@ -156,6 +156,17 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 # Using the Globe key to open the Unicode picker
 defaults write com.apple.HIToolbox AppleFnUsageType -int 2
 
+# Disabling dictation auto-activation
+defaults write com.apple.HIToolbox AppleDictationAutoEnable -bool false
+
+# Disabling keyboard substitutions
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled = 0;
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled = 0;
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled = 0;
+
+# Enabling inline prediction (i hate myself)
+defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled = 1;
+
 # Setting up pointer speed
 defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
