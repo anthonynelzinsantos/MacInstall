@@ -141,8 +141,13 @@ killall Finder
 # Keyboard and mouse #
 ######################
 
+echo "Setting up keyboard and mouse…"
+
 # Disabling accent menu
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Enabling keyboard navigation
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
 # Setting up pointer speed
 defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
