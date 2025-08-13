@@ -224,6 +224,8 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 # Siri and Apple ‘Intelligence’ #
 #################################
 
+echo "Setting up Siri…"
+
 # Disabling dictation
 defaults write com.apple.assistant.support "Dictation Enabled" -bool false
 
