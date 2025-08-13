@@ -141,6 +141,10 @@ killall Finder
 # Keyboard and mouse #
 ######################
 
+# Setting up the speed
+defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
+
 # Enabling touch to click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
@@ -149,6 +153,7 @@ defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 2
 
 # Disabling forced click
 defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+# defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false would also work
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
 
 # Disabling Notification center swipe gesture
