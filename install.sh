@@ -149,6 +149,9 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Enabling keyboard navigation
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
+# Using the Globe key to open the Unicode picker
+defaults write com.apple.HIToolbox AppleFnUsageType -int 2
+
 # Setting up pointer speed
 defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
