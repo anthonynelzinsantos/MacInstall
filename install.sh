@@ -15,17 +15,20 @@
 ###################################
 ###################################
 
-echo "The configuration will start…"
+###########
+# General #
+###########
+
+echo "The configuration is starting…"
 
 # Quit System Settings to prevent overwriting
 osascript -e 'tell application "System Settings" to quit'
 
 # Opening a sudo session
-echo "Opening a sudo session…"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Setting the time
+# Setting up the time
 systemsetup -setusingnetworktime on
 systemsetup -settimezone Europe/Paris
 systemsetup -setnetworktimeserver pool.ntp.org
@@ -41,12 +44,48 @@ systemsetup -setcomputername ${COMPUTERNAME:-Pippin}
 systemsetup -setlocalsubnetname ${COMPUTERNAME:-Pippin}
 echo "This computer will be called ${COMPUTERNAME:-Pippin}."
 
-# Setting the sleep timers (in minutes)
+# Setting up sleep timers
 systemsetup -setharddisksleep 10
 systemsetup -setdisplaysleep 10
-echo "Setting screen lock, please enter your password when prompted…"
+
+# Setting up screen lock (requires password)
 sysadminctl -screenLock immediate -password -
 systemsetup -setcomputersleep Never
+
+##########
+# Finder #
+##########
+
+echo "Setting up Finder…"
+
+# New windows show Recents
+defaults write com.apple.finder NewWindowTarget -string "PfAF"
+
+# Default view to list
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show path and status bar
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Immediatly show the toolbar icon on hover
+defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
+# Show all extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Don’t confirm extension change
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Don’t show Desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder SidebarShowingiCloudDesktop -bool false
+defaults read com.apple.WindowManager StandardHideDesktopIcons -bool true
+
+# Relaunch Finder
+killall Finder
 
 ##############################
 ## Dock and Mission Control ##
@@ -63,37 +102,6 @@ defaults write com.apple.dock wvous-br-corner -int 10 && defaults write com.appl
 
 ## Touch to click
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-############
-## Finder ##
-############
-
-## Always show scroll bars
-defaults write -g AppleShowScrollBars -string "Always"
-
-## New windows show Desktop
-defaults write com.apple.finder NewWindowTarget -string "PfDe" && defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/Desktop/"
-
-## View as list
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-## Show path bar
-defaults write com.apple.finder ShowPathbar -bool true
-
-## Show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
-
-## Show file extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-## Show expanded file panel by default
-defaults write -g NSNavPanelExpandedStateForSaveMode -bool true && defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
-
-## Disable Time Machine popup w/ new disks
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-## Relaunch Finder
-killall Finder
 
 ##############
 ## Terminal ##
