@@ -146,6 +146,10 @@ echo "Setting up keyboard and mouse…"
 # Disabling accent menu
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
+# Speeding up key repetition
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
+defaults write NSGlobalDomain KeyRepeat -int 5
+
 # Enabling keyboard navigation
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
