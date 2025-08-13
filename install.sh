@@ -199,14 +199,15 @@ defaults write com.apple.assistant.support "Dictation Enabled" -bool false
 defaults write com.apple.HIToolbox AppleDictationAutoEnable -bool false
 
 # Disabling as many Siri services as possible
+defaults write com.apple.Siri StatusMenuVisible -bool false
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -bool false
-defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.siri.generativeassistantsettings "Assistant Enabled" -bool false
 
 # Disabling as many Apple Intelligence services as possible
 defaults write com.apple.CloudSubscriptionFeatures.optIn "158330617" -bool false # WTF, Apple?
 defaults write com.apple.CloudSubscriptionFeatures.optIn "device" -bool false
-defaults write com.apple.AppleIntelligenceReport "reportDuration" -bool false
+defaults write com.apple.AppleIntelligenceReport "isEnabled" -bool false
 
 ##############
 ## Terminal ##
