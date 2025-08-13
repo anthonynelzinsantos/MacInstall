@@ -141,7 +141,10 @@ killall Finder
 # Keyboard and mouse #
 ######################
 
-# Setting up the speed
+# Disabling accent menu
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Setting up pointer speed
 defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
 
