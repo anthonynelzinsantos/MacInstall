@@ -137,6 +137,38 @@ defaults write com.apple.WindowManager StandardHideDesktopIcons -bool true
 # Relaunching Finder
 killall Finder
 
+##########
+# Safari #
+##########
+
+echo "Setting up Safari…"
+
+# Improving security with sensible defaults
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+defaults write com.apple.Safari ShowOverlayStatusBar -bool true
+
+# Disabling autofill
+defaults write com.apple.Safari AutoFillCreditCardData -bool false
+defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+defaults write com.apple.Safari AutoFillFromiCloudKeychain -bool false
+defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+defaults write com.apple.Safari AutoFillPasswords -bool false
+
+# Enabling the Develop menu
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+# Setting up website permissions
+defaults write com.apple.Safari CanPromptForPushNotifications -bool false
+
+# Setting up the Favorites page
+defaults write com.apple.Safari ShowBackgroundImageInFavorites -bool false
+defaults write com.apple.Safari ShowCloudTabsInFavorites -bool true
+defaults write com.apple.Safari ShowFrequentlyVisitedSites -bool false
+defaults write com.apple.Safari ShowHighlightsInFavorites -bool false
+defaults write com.apple.Safari ShowPrivacyReportInFavorites -bool false
+defaults write com.apple.Safari ShowReadingListInFavorites -bool false
+
 ######################
 # Keyboard and mouse #
 ######################
