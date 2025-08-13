@@ -28,11 +28,6 @@ osascript -e 'tell application "System Settings" to quit'
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Setting up the time
-systemsetup -setusingnetworktime on
-systemsetup -settimezone Europe/Paris
-systemsetup -setnetworktimeserver pool.ntp.org
-
 # Setting automatic reboot in case of problems or power failures
 # Comment out when setting up servers
 # systemsetup -setrestartfreeze on
@@ -51,6 +46,19 @@ systemsetup -setdisplaysleep 10
 # Setting up screen lock (requires password)
 sysadminctl -screenLock immediate -password -
 systemsetup -setcomputersleep Never
+
+########
+# Time #
+########
+
+# Enable network time
+systemsetup -setusingnetworktime on
+systemsetup -settimezone Europe/Paris
+systemsetup -setnetworktimeserver pool.ntp.org
+
+# Setting up menubar clock
+defaults write com.apple.menuextra.clock ShowDate -bool true
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
 
 ##########
 # Finder #
