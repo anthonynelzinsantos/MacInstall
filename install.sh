@@ -3,14 +3,14 @@
 ###################################
 ###################################
 ##                               ##
-## MacInstall                    ##
-## v20250812                     ##
+##         MacInstall            ##
+##         v20250813             ##
 ##                               ##
-## Anthony Nelzin-Santos         ##
-## https://z1nz0l1n.com          ##
+##     Anthony Nelzin-Santos     ##
+##     https://z1nz0l1n.com      ##
 ##                               ##
 ## European Union Public Licence ##
-## https://eupl.eu/1.2/en/       ##
+##    https://eupl.eu/1.2/en/    ##
 ##                               ##
 ###################################
 ###################################
