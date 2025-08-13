@@ -137,6 +137,28 @@ defaults write com.apple.WindowManager StandardHideDesktopIcons -bool true
 # Relaunching Finder
 killall Finder
 
+######################
+# Keyboard and mouse #
+######################
+
+# Enabling touch to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Setting up click weight to firm
+defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 2
+
+# Disabling forced click
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
+
+# Disabling Notification center swipe gesture
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
+
+# Enabling App Exposé
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+
+# Enabling drag lock
+defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 
 ##############
 ## Terminal ##
