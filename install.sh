@@ -101,6 +101,57 @@ defaults write com.apple.dock wvous-br-corner -int 13 && defaults write com.appl
 # Adding a margin around tiled windows
 defaults write com.apple.windowmanager "EnableTiledWindowMargins" -bool true
 
+######################
+# Keyboard and mouse #
+######################
+
+echo "Setting up keyboard and mouse…"
+
+# Disabling accent menu
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Speeding up key repetition
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
+defaults write NSGlobalDomain KeyRepeat -int 5
+
+# Enabling keyboard navigation
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+
+# Using the Globe key to open the Unicode picker
+defaults write com.apple.HIToolbox AppleFnUsageType -int 2
+
+# Disabling keyboard substitutions
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled = 0;
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled = 0;
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled = 0;
+
+# Enabling inline prediction (i hate myself)
+defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled = 1;
+
+# Setting up pointer speed
+defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
+
+# Enabling touch to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Setting up click weight to firm
+defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 2
+
+# Disabling forced click
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+# defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false would also work
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
+
+# Disabling Notification center swipe gesture
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
+
+# Enabling App Exposé
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+
+# Enabling drag lock
+defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
+
 ##########
 # Finder #
 ##########
@@ -169,56 +220,15 @@ defaults write com.apple.Safari ShowHighlightsInFavorites -bool false
 defaults write com.apple.Safari ShowPrivacyReportInFavorites -bool false
 defaults write com.apple.Safari ShowReadingListInFavorites -bool false
 
-######################
-# Keyboard and mouse #
-######################
+############
+# Terminal #
+############
 
-echo "Setting up keyboard and mouse…"
+echo "Setting up Terminal…"
 
-# Disabling accent menu
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Speeding up key repetition
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
-defaults write NSGlobalDomain KeyRepeat -int 5
-
-# Enabling keyboard navigation
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
-
-# Using the Globe key to open the Unicode picker
-defaults write com.apple.HIToolbox AppleFnUsageType -int 2
-
-# Disabling keyboard substitutions
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled = 0;
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled = 0;
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled = 0;
-
-# Enabling inline prediction (i hate myself)
-defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled = 1;
-
-# Setting up pointer speed
-defaults write NSGlobalDomain com.apple.mouse.scaling -float "0.875"
-defaults write NSGlobalDomain com.apple.trackpad.scaling -float "0.875"
-
-# Enabling touch to click
-defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-
-# Setting up click weight to firm
-defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 2
-
-# Disabling forced click
-defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
-# defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false would also work
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
-
-# Disabling Notification center swipe gesture
-defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
-
-# Enabling App Exposé
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
-
-# Enabling drag lock
-defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
+## Setting up the theme
+defaults write com.apple.Terminal "Default Window Settings" -string "Clear Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Clear Dark"
 
 #################################
 # Siri and Apple ‘Intelligence’ #
@@ -243,71 +253,64 @@ defaults write com.apple.CloudSubscriptionFeatures.optIn "158330617" -bool false
 defaults write com.apple.CloudSubscriptionFeatures.optIn "device" -bool false
 defaults write com.apple.AppleIntelligenceReport "isEnabled" -bool false
 
-############
-# Terminal #
-############
+########
+# Apps #
+########
 
-echo "Setting up Terminal…"
+echo "Installing apps…"
 
-## Setting up the theme
-defaults write com.apple.Terminal "Default Window Settings" -string "Clear Dark"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Clear Dark"
-
-##############
-## Homebrew ##
-##############
-
-## Install Homebrew
+# Installing Homebrew
 cd
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> .zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-## Install apps with Cask
-brew cask install audacity bbedit ffmpeg firefox tower
+# Installing apps with Cask
+brew cask install 1password appcleaner bbedit calibre contraste figma firefox horos kdrive oscar plexamp pocket-casts swinsian utm
 
-## Install apps with MAS
+# Installing apps with MAS
 brew install mas
-mas install 1365531024 # 1Blocker
 mas install 1598429775 # Antidote Connector
-mas install 1423210932 # Flow
+mas install 936422955 # Buddy
 mas install 1474335294 # Goodlinks
+mas install 978393692 # Hello Weather
 mas install 1099568401 # Home Assistant
 mas install 775737590 # iA Writer
-mas install 1622835804 # Kagi
 mas install 409183694 # Keynote
 mas install 409203825 # Numbers
 mas install 409201541 # Pages
+mas install 639968404 # Parcel
+mas install 1289583905 # Pixelmator Pro
 mas install 1444636541 # Photomator
 mas install 6475002485 # Reeder
-mas install 1606145041 # Sleeve
 mas install 6471380298 # Stop the Madness Pro
-mas install 899247664 # Testflight
-mas install 1225570693 # Ulysses
+mas install 1475387142 # Tailscale
+mas install 1491071483 # Tot
 mas install 1415257369 # Waterminder
 
-## Open Antidote's website
-open "https://antidote.app"
-
-## Empty the Dock
+# Setting up the Dock
 defaults write com.apple.dock persistent-apps -array
-
-## Set up the Dock
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/FaceTime.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/1Password.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GoodLinks.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iA\ Writer.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Messages.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Music.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Photos.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Photomator.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Plans.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Plexamp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Reeder.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/UlyssesMac.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/System\ Settings.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-
-## Relancer le Dock
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Tot.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Waterminder.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 killall Dock
 
-echo "Done."
+# Opening the apps that need to be set up manually
+open -a 1Password
+open -a kDrive
+open -a Tailscale
+
+# Opening Druide's website to manually install Antidote
+open "https://services.druide.com/client/"
+
+echo "All done!"
