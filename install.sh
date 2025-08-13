@@ -243,15 +243,15 @@ defaults write com.apple.CloudSubscriptionFeatures.optIn "158330617" -bool false
 defaults write com.apple.CloudSubscriptionFeatures.optIn "device" -bool false
 defaults write com.apple.AppleIntelligenceReport "isEnabled" -bool false
 
-##############
-## Terminal ##
-##############
+############
+# Terminal #
+############
 
-## Use Homebrew theme
-defaults write com.apple.Terminal "Default Window Settings" -string "Homebrew" && defaults write com.apple.Terminal "Startup Window Settings" -string "Homebrew"
+echo "Setting up Terminal…"
 
-## Install Rosetta
-softwareupdate --install-rosetta
+## Setting up the theme
+defaults write com.apple.Terminal "Default Window Settings" -string "Clear Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Clear Dark"
 
 ##############
 ## Homebrew ##
