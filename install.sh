@@ -28,16 +28,16 @@ osascript -e 'tell application "System Settings" to quit'
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Setting automatic reboot in case of problems or power failures
-# Comment out when setting up servers
-# systemsetup -setrestartfreeze on
-# systemsetup -setWaitForStartupAfterPowerFailure 30
-
 # Naming the machine
 read -p "What will this computer’s name be?" COMPUTERNAME
 systemsetup -setcomputername ${COMPUTERNAME:-Pippin}
 systemsetup -setlocalsubnetname ${COMPUTERNAME:-Pippin}
 echo "This computer will be called ${COMPUTERNAME:-Pippin}."
+
+# Setting automatic reboot in case of problems or power failures
+# Comment out when setting up servers
+# systemsetup -setrestartfreeze on
+# systemsetup -setWaitForStartupAfterPowerFailure 30
 
 # Setting up sleep timers
 systemsetup -setharddisksleep 10
@@ -51,6 +51,8 @@ systemsetup -setcomputersleep Never
 # Time #
 ########
 
+echo "Setting up time…"
+
 # Enabling network time
 systemsetup -setusingnetworktime on
 systemsetup -settimezone Europe/Paris
@@ -59,6 +61,45 @@ systemsetup -setnetworktimeserver pool.ntp.org
 # Setting up the menubar clock
 defaults write com.apple.menuextra.clock ShowDate -bool true
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
+
+########
+# Dock #
+########
+
+echo "Setting up the Dock…"
+
+# Pinning to the left edge of the screen
+defaults write com.apple.dock orientation -string "left"
+
+# Hiding automatically
+defaults write com.apple.dock autohide -bool true
+
+# Setting the icon size to 36 px
+defaults write com.apple.dock "tilesize" -int 36
+
+#####################
+# Window management #
+#####################
+
+echo "Setting up window management…"
+
+# Disabling spaces automatical reordering
+defaults write com.apple.dock mru-spaces -bool false
+
+# Grouping windows by application
+defaults write com.apple.dock expose-group-apps -bool true
+
+# Spanning spaces accross displays
+defaults write com.apple.spaces spans-displays -bool true
+
+# Setting up hot corners: Desktop on top left, Mission Control on bottom left, Notification Center on top right, locked screen on bottom right
+defaults write com.apple.dock wvous-tl-corner -int 4 && defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-bl-corner -int 2 && defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-tr-corner -int 12 && defaults write com.apple.dock wvous-tr-modifier -int 0
+defaults write com.apple.dock wvous-br-corner -int 13 && defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Adding a margin around tiled windows
+defaults write com.apple.windowmanager "EnableTiledWindowMargins" -bool true
 
 ##########
 # Finder #
@@ -90,36 +131,12 @@ defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.finder SidebarShowingiCloudDesktop -bool false
-defaults read com.apple.WindowManager StandardHideDesktopIcons -bool true
+defaults write com.apple.WindowManager HideDesktop -bool true
+defaults write com.apple.WindowManager StandardHideDesktopIcons -bool true
 
 # Relaunching Finder
 killall Finder
 
-########
-# Dock #
-########
-
-# Pinning to the left edge of the screen
-defaults write com.apple.dock orientation -string "left"
-
-# Hiding automatically
-defaults write com.apple.dock autohide -bool true
-
-# Setting the icon size to 36 px
-defaults write com.apple.dock "tilesize" -int 36
-
-##############################
-## Mission Control ##
-##############################
-
-## Hot corner > top right > Mission Control
-defaults write com.apple.dock wvous-tr-corner -int 2 && defaults write com.apple.dock wvous-tr-modifier -int 0
-
-## Hot corner > bottom right > screen saver
-defaults write com.apple.dock wvous-br-corner -int 10 && defaults write com.apple.dock wvous-br-modifier -int 0
-
-## Touch to click
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
 ##############
 ## Terminal ##
