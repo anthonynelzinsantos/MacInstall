@@ -156,9 +156,6 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 # Using the Globe key to open the Unicode picker
 defaults write com.apple.HIToolbox AppleFnUsageType -int 2
 
-# Disabling dictation auto-activation
-defaults write com.apple.HIToolbox AppleDictationAutoEnable -bool false
-
 # Disabling keyboard substitutions
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled = 0;
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled = 0;
@@ -190,6 +187,26 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGes
 
 # Enabling drag lock
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
+
+#################################
+# Siri and Apple ‘Intelligence’ #
+#################################
+
+# Disabling dictation
+defaults write com.apple.assistant.support "Dictation Enabled" -bool false
+
+# Disabling dictation auto-activation
+defaults write com.apple.HIToolbox AppleDictationAutoEnable -bool false
+
+# Disabling as many Siri services as possible
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -bool false
+defaults write com.apple.Siri StatusMenuVisible -bool false
+
+# Disabling as many Apple Intelligence services as possible
+defaults write com.apple.CloudSubscriptionFeatures.optIn "158330617" -bool false # WTF, Apple?
+defaults write com.apple.CloudSubscriptionFeatures.optIn "device" -bool false
+defaults write com.apple.AppleIntelligenceReport "reportDuration" -bool false
 
 ##############
 ## Terminal ##
