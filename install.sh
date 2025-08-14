@@ -276,6 +276,7 @@ mas install 1474335294 # Goodlinks
 mas install 978393692 # Hello Weather
 mas install 1099568401 # Home Assistant
 mas install 775737590 # iA Writer
+mas install 1622835804 # Kagi
 mas install 409183694 # Keynote
 mas install 409203825 # Numbers
 mas install 409201541 # Pages
